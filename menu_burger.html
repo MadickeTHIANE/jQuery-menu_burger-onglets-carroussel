@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .masquer {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <button class="menu">Menu</button>
+            <ul>
+                <li>Lorem.</li>
+                <li>Harum.</li>
+                <li>Temporibus.</li>
+                <li>Qui.</li>
+            </ul>
+        </header>
+        <section>
+            <img src="" alt="" class="diaporama">
+        </section>
+        <section>
+            <button class="onglet" data-index="0">Onglet 1</button>
+            <button class="onglet" data-index="1">Onglet 2</button>
+            <button class="onglet" data-index="2">Onglet 3</button>
+            <button class="onglet" data-index="3">Onglet 4</button>
+        </section>
+        <section>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni temporibus voluptates pariatur doloremque, corrupti at in alias voluptate nisi
+                nobis odit. Alias architecto atque distinctio ab commodi suscipit reiciendis aliquam!</p>
+            <p>Incidunt sequi aliquam architecto provident dignissimos cum pariatur molestias voluptatem optio aspernatur totam iure quasi, asperiores voluptas
+                consequatur repellendus repudiandae repellat fuga magnam natus! Labore beatae eveniet repellat voluptates distinctio.</p>
+            <p>Repudiandae aperiam tempora vero eaque autem ipsa recusandae beatae labore itaque, totam soluta voluptatibus quos? Reiciendis unde, nesciunt quis
+                similique, deleniti enim quam quas cum doloremque ad voluptate eos expedita.</p>
+            <p>Ratione, tempora voluptates aliquam libero aliquid similique dolorem temporibus, vitae cupiditate cum accusantium accusamus quod assumenda
+                consequuntur doloremque, excepturi amet suscipit! Commodi officia assumenda veritatis eveniet laboriosam atque maiores voluptate?</p>
+        </section>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        // => mettre en place ces 3 composants dans une seule et même page !! en utilisant jquery
+        $('.menu').on('click', function () {
+            $('ul').toggleClass('masquer')
+        })
+        //=========================================================================================
+        $('p').css('display', 'none').first().css('display', 'block')
+        $('.onglet').on('click', function () {
+            index = $(this).data('index')
+            $('p').css('display', 'none').eq(index).css('display', 'block')
+        })
+        //=========================================================================================
+        let diapositives = [
+            "https://source.unsplash.com/random/200x100",
+            "https://source.unsplash.com/random/200x101",
+            "https://source.unsplash.com/random/200x103",
+            "https://source.unsplash.com/random/200x102",
+            "https://source.unsplash.com/random/200x104",
+            "https://source.unsplash.com/random/200x99"
+        ]
+        $('img').attr('src', diapositives[0])
+        let index = 0;
+        function gestionDiaporama() {
+            if (index >= diapositives.length) {
+                index = 0;
+            }
+            $(".diaporama").attr("src", diapositives[index]);
+            index++;
+            setTimeout(gestionDiaporama, 1000);
+        }
+        gestionDiaporama();
+    </script>
+</body>
+
+</html>
